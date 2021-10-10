@@ -17,6 +17,8 @@ import favicon from "./imagenes/logo.png";
 //* importamos el fondo
 import Fondos from './Elementos/Fondos';
 //* Texto recuprado de: https://fonts.google.com/specimen/Inconsolata
+//importamos los 
+import { AuthProvider } from './contextos/AuthContex';
 WebFont.load({
   google: {
     families: ['Inconsolata', 'monospace']
@@ -27,22 +29,24 @@ const Index = () => {
 
   return <>
     <Helmet>
-      <link rel="shortcut icon" href={favicon} type="image/x-icon"/>
+      <link rel="shortcut icon" href={favicon} type="image/x-icon" />
       <title>App de Gastos</title>
     </Helmet>
-    <BrowserRouter>
-      <Contenedor>
-        <Switch>
-          <Route path="/iniciar-sesion" component={Login} />
-          <Route path="/crear-cuenta" component={RegisterLogin} />
-          <Route path="/categorias" component={GastosCategoria} />
-          <Route path="/lista" component={ListaGastos} />
-          <Route path="/editar-gasto/:id" component={EditarGasto} />
-          <Route path="/" component={App} />
-        </Switch>
-      </Contenedor>
-    </BrowserRouter>
-    <Fondos/> 
+    <AuthProvider>
+      <BrowserRouter>
+        <Contenedor>
+          <Switch>
+            <Route path="/iniciar-sesion" component={Login} />
+            <Route path="/crear-cuenta" component={RegisterLogin} />
+            <Route path="/categorias" component={GastosCategoria} />
+            <Route path="/lista" component={ListaGastos} />
+            <Route path="/editar-gasto/:id" component={EditarGasto} />
+            <Route path="/" component={App} />
+          </Switch>
+        </Contenedor>
+      </BrowserRouter>
+    </AuthProvider>
+    <Fondos />
   </>
 }
 
