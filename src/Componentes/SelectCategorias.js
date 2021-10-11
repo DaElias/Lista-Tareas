@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import theme from '../Elementos/theme';
 import { ReactComponent as IconoDown } from '../imagenes/down.svg';
-
+import IconosCategoria from '../Elementos/IconosCategoria';
 
 const SelectCategorias = ({ categoria, setCategoria }) => {
     const [mostrarSelect, setMostrarSelect] = useState(false);
@@ -22,6 +22,7 @@ const SelectCategorias = ({ categoria, setCategoria }) => {
     return (
         <ContenedorSelect onClick={() => setMostrarSelect(!mostrarSelect)}>
             <OpcionSeleccionada>
+                <IconosCategoria nombre={categoria}/>
                 {categoria} <IconoDown />
             </OpcionSeleccionada>
             {mostrarSelect &&
@@ -31,7 +32,9 @@ const SelectCategorias = ({ categoria, setCategoria }) => {
                             key={catego.id}
                             id={catego.id}
                             onClick={handleClick}
-                        >{catego.texto}</Opcion>;
+                        >
+                            <IconosCategoria nombre={catego.id}/>
+                            {catego.texto}</Opcion>;
                     })}
                 </Opciones>
             }
