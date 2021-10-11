@@ -9,7 +9,7 @@ const ListaGastos = () => {
     //const contextos = useContext(AuthContext);
     //console.log(contextos);
     const contexto = useAuth();
-    console.log(contexto.usuario);
+    //console.log(contexto.usuario);
     return (
         <>
             <Helmet>

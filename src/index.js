@@ -19,6 +19,8 @@ import Fondos from './Elementos/Fondos';
 //* Texto recuprado de: https://fonts.google.com/specimen/Inconsolata
 //importamos los 
 import { AuthProvider } from './contextos/AuthContex';
+import RutaPrivada from './Componentes/RutaPrivada';
+
 WebFont.load({
   google: {
     families: ['Inconsolata', 'monospace']
@@ -38,10 +40,25 @@ const Index = () => {
           <Switch>
             <Route path="/iniciar-sesion" component={Login} />
             <Route path="/crear-cuenta" component={RegisterLogin} />
-            <Route path="/categorias" component={GastosCategoria} />
-            <Route path="/lista" component={ListaGastos} />
-            <Route path="/editar-gasto/:id" component={EditarGasto} />
-            <Route path="/" component={App} />
+            <RutaPrivada path="/categorias">
+              <GastosCategoria />
+              {/*
+              <Route path="/categorias" component={GastosCategoria} />
+               */}
+            </RutaPrivada>
+            <RutaPrivada path="/lista" >
+              <ListaGastos />
+            </RutaPrivada>
+
+            <RutaPrivada path="/editar-gasto/:id">
+              <EditarGasto />
+            </RutaPrivada>
+            <RutaPrivada path="/">
+              <App />
+            </RutaPrivada>
+
+
+
           </Switch>
         </Contenedor>
       </BrowserRouter>
