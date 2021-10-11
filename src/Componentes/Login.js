@@ -7,6 +7,7 @@ import { ReactComponent as SvgLogin } from './../imagenes/login.svg';
 import styled from 'styled-components';
 import Alerta from '../Elementos/Alerta';
 import { useHistory } from 'react-router';
+import { signInWithEmailAndPassword, getAuth } from '../firebase/firebaseConfig';
 const Svg = styled(SvgLogin)`
     width: 100%;
     max-height: 12.5rem; //100px
@@ -33,7 +34,7 @@ const Login = () => {
                 break;
         }
     }
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault();
         setEstadoAlerta(false);
         setAlerta({});
@@ -43,9 +44,27 @@ const Login = () => {
         const vaciosTest = correo === "" || password === "" ? false : true;
         if (correoTest && vaciosTest) {
             //code here
+            const auth = getAuth();
+            try{
+                await signInWithEmailAndPassword(auth, correo, password);
+                history.push("/");
+            }catch(e){
+                setEstadoAlerta(true);
+                let mensaje;
+                if (e.code === "auth/user-not-found") {
+                    mensaje = "El correo no existe!!";
+                } else if (e.code === "auth/wrong-password") {
+                    mensaje = "Contraseña erronea!!";
+                }
 
+                setAlerta({
+                    tipo: "error",
+                    mensaje: mensaje
+                }); 
+            }
+            
 
-            history.push("/");
+          
         } else {
             let mensaje = "";
             setEstadoAlerta(true);

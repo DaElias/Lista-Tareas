@@ -15,7 +15,7 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         //comprobamos si hay usuario
-        onAuthStateChanged(auth, (user) => {
+        const cancelarApp = onAuthStateChanged(auth, (user) => {
             setUsuario(user);
             setCargando(false)
             /*
@@ -25,12 +25,13 @@ const AuthProvider = ({ children }) => {
             }
  */
         });
-    });
+        return cancelarApp;
+    },[]);
 
     //con el cargando primero comprobamos el usuario y despues mostramos la pag
     return (
         <AuthContext.Provider value={{ usuario: usuario }}>
-            { !cargando && children}
+            {!cargando && children}
         </AuthContext.Provider>
     )
 }

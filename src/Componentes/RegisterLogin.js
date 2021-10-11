@@ -67,6 +67,7 @@ const RegisterLogin = () => {
                 /*   setCorreo("");
                   setPassword("");
                   setPassword2(""); */
+
                 history.push('/')
             }
             catch (error) {
@@ -92,9 +93,11 @@ const RegisterLogin = () => {
                 });
             }
         } else {
+
             if (!correoTest) {
-                /* console.log("Correo error");*/
                 setEstadoAlerta(true);
+
+                /* console.log("Correo error");*/
                 setAlerta({
                     tipo: "error",
                     mensaje: "Ingrese un correo electronico valido!!"
