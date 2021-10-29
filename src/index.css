@@ -9,20 +9,22 @@
 }
 
 body {
-  background: #F9F9F9;
+  /*background: #F9F9F9;*/
+  background: #000000; /*Momental*/
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Work Sans', sans-serif;
+  font-family: "Work Sans", sans-serif;
 }
 
 #root {
   width: 100%;
 }
 
-@media screen and (max-width: 60rem){ /* 950px */
+@media screen and (max-width: 60rem) {
+  /* 950px */
   :root {
-      font-size: 14px;
+    font-size: 14px;
   }
 }

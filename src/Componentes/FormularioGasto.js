@@ -19,7 +19,7 @@ import { setLogLevel } from '@firebase/app';
 const FormularioGasto = () => {
     const [inputDescription, setInputDescription] = useState('');
     const [inputCatidad, setInputCatidad] = useState('');
-    const [categoria, setCategoria] = useState('Hogar');
+    const [categoria, setCategoria] = useState('hogar');
     const [fecha, setFecha] = useState(new Date());
     const usuario = useAuth().usuario; //no pregunten xD
     //agregar alerta

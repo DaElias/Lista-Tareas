@@ -1,4 +1,3 @@
-import { zhCN } from 'date-fns/locale';
 import React from 'react';
 import styled from 'styled-components';
 import theme from '../Elementos/theme';

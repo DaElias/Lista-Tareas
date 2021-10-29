@@ -1,4 +1,4 @@
-import { db,setDoc,doc,addDoc,collection } from './firebaseConfig';
+import { db,addDoc,collection } from './firebaseConfig';
 
 
 const AgregarGastos = async({categoria,descripcion,cantidad,fecha}) => {
