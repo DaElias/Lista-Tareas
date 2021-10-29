@@ -22,7 +22,7 @@ const SelectCategorias = ({ categoria, setCategoria }) => {
     return (
         <ContenedorSelect onClick={() => setMostrarSelect(!mostrarSelect)}>
             <OpcionSeleccionada>
-                <IconosCategoria nombre={categoria}/>
+                <IconosCategoria id={categoria}/>
                 {categoria} <IconoDown />
             </OpcionSeleccionada>
             {mostrarSelect &&
@@ -33,7 +33,7 @@ const SelectCategorias = ({ categoria, setCategoria }) => {
                             id={catego.id}
                             onClick={handleClick}
                         >
-                            <IconosCategoria nombre={catego.id}/>
+                            <IconosCategoria id={catego.id}/>
                             {catego.texto}</Opcion>;
                     })}
                 </Opciones>

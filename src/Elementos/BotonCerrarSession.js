@@ -1,4 +1,3 @@
-import react from "react";
 import { ReactComponent as IconoCerrarSession } from "./../imagenes/log-out.svg";
 import Boton from "./Botones";
 import { getAuth, signOut } from '../firebase/firebaseConfig';

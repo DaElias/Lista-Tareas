@@ -28,7 +28,6 @@ WebFont.load({
 });
 
 const Index = () => {
-
   return <>
     <Helmet>
       <link rel="shortcut icon" href={favicon} type="image/x-icon" />
@@ -49,16 +48,12 @@ const Index = () => {
             <RutaPrivada path="/lista" >
               <ListaGastos />
             </RutaPrivada>
-
             <RutaPrivada path="/editar-gasto/:id">
               <EditarGasto />
             </RutaPrivada>
             <RutaPrivada path="/">
               <App />
             </RutaPrivada>
-
-
-
           </Switch>
         </Contenedor>
       </BrowserRouter>

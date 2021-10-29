@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAuth } from '../contextos/AuthContex';
-import { useHistory } from 'react-router';
+//import { useHistory } from 'react-router';
 import { Route, Redirect } from 'react-router';
 
 

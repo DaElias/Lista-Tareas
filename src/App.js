@@ -4,6 +4,7 @@ import Boton from "./Elementos/Botones";
 import { Header, Titulo, ContenedorBotones, ContenedorHeader } from './Elementos/Header';
 import BotonCerrarSession from './Elementos/BotonCerrarSession';
 import FormularioGasto from './Componentes/FormularioGasto';
+import BarraTotalGastos from "./Componentes/BarraTotalGastos";
 
 function App() {
   return (
@@ -23,9 +24,8 @@ function App() {
           </ContenedorBotones>
         </ContenedorHeader>
       </Header>
-
       <FormularioGasto/>
-
+    <BarraTotalGastos/>
 
     </>
   );
