@@ -7,7 +7,7 @@ const AgregarGastos = async({categoria,descripcion,cantidad,fecha}) => {
        const refDoc = await addDoc(collection(db,"DatosGastos"),{
             categoria:categoria,
             descripcion:descripcion,
-            cantidad:cantidad,
+            cantidad:Number(cantidad),
             fecha:fecha
         });
         //console.log(refDoc);

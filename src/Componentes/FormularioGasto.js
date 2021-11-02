@@ -14,18 +14,21 @@ import getUnixTime from 'date-fns/getUnixTime';
 //*Alerta
 import Alerta from '../Elementos/Alerta';
 import { useAuth } from '../contextos/AuthContex';
-import { setLogLevel } from '@firebase/app';
+//import { setLogLevel } from '@firebase/app';
+import convertirMoneda from '../funciones/convertirMoneda';
 
 const FormularioGasto = () => {
     const [inputDescription, setInputDescription] = useState('');
     const [inputCatidad, setInputCatidad] = useState('');
+    //const [inputCatidadM, setInputCatidadM] = useState('');
+
     const [categoria, setCategoria] = useState('hogar');
     const [fecha, setFecha] = useState(new Date());
     const usuario = useAuth().usuario; //no pregunten xD
     //agregar alerta
     const [estadoAlerta, setEstadoAlerta] = useState(false);
     const [alerta, setAlerta] = useState({});
-    //console.log(usuario.uid);
+    
 
     const handleChange = (e) => {
         switch (e.target.name) {
@@ -35,6 +38,8 @@ const FormularioGasto = () => {
             case 'valor':
                 let dato = e.target.value;
                 //expresionRegular todo lo que sea numero remplazarlo por ''
+               //console.log(convertirMoneda(dato.replace(/[^0-9.]/g, '')));
+                //setInputCatidadM(convertirMoneda(dato.replace(/[^0-9.]/g, '')));
                 setInputCatidad(dato.replace(/[^0-9.]/g, ''));
                 break;
             default:
@@ -77,13 +82,24 @@ const FormularioGasto = () => {
         const infoAlerta = { tipo: "", texto: "" }
         try {
             const cantidad= parseFloat(inputCatidad).toFixed(2);
-            const refDoc = await addDoc(collection(db, "DatosGastos"), {
+            //usuario.uid
+            const refDoc = await addDoc(collection(db, "DatosGastos"), { //se guardan todos los datos en DatosGastos
                 categoria: categoria,
                 descripcion: inputDescription,
                 cantidad: cantidad,
                 fecha: getUnixTime(fecha),
                 uid: usuario.uid
             });
+            /*
+            const refDoc = await addDoc(collection(db, usuario.uid), { //se guardan todos los datos en colecciones por usuario
+                categoria: categoria,
+                descripcion: inputDescription,
+                cantidad: cantidad,
+                fecha: getUnixTime(fecha),
+                uid: usuario.uid
+            });
+           
+           */
             /*
               await setDoc(doc(db,"DatosGasto"),{
                   categoria:categoria,
